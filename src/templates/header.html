@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/header.css')}}">
+
+<header id="header">
+    <h2>Chat App</h2>
+    {% if session.name %}
+        {% if profile_img != 'None' %}
+            <img id="dropdown_menue_profile_img" src="{{url_for('static', filename=profile_img)}}">
+        {% else %}
+            <img id="dropdown_menue_profile_img" src="{{url_for('home.static', filename='assets/imagefail.png')}}">
+        {% endif %}
+    {% endif %}
+    <div id="dropdown">
+        <div id="dropdown_icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div id="dropdown_menue">
+                {% if session.name %}
+                    <div id="dropdown_menue_header">
+                        <label class="text">Angemeldet als</label>
+                        <label class="text">{{session.name}}</label>
+                    </div>
+                {% endif %}
+
+                <div id="dropdown_menue_content">
+                    {% if session.name %}
+                        <a href="{{url_for('home.index')}}">Home</a>
+                    {% else %}
+                        <a href="{{url_for('signin.index')}}">Sign-in</a>
+                        <a href="{{url_for('signup.index')}}">Sign-up</a>
+                    {% endif %}
+                </div>
+                {% if session.name %}
+                    <div id="dropdown_menue_footer">
+                        <a id="logoutbtn" href="{{url_for('logout.index')}}">Logout</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,93 @@
+#home
+{
+    width: 100%;
+    height: 100%;
+    font-size: var(--font_size);
+    color: var(--white);
+    display: flex;
+}
+#home #sidebar_dropdown
+{
+    display: none;
+}
+#home > input
+{
+    display: none;
+}
+#home #sidebar
+{
+    height: 100%;
+    width: 250px;
+    border-right: 1px solid var(--white);
+    background-color: var(--black);
+    color: var(--white);
+    font-size: calc(var(--font_size) - 5px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#home #content
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+}
+@media only screen and (max-width: 1000px)
+{
+    #home #sidebar_dropdown
+    {
+        display: grid;
+        width: 35px;
+        height: 35px;
+        padding: 4px;
+        border: 1px solid var(--white);
+        align-items: center;
+        cursor: pointer;
+        margin: 2px;
+        position: absolute;
+        z-index: 10;
+        background-color: var(--black);
+    }
+    #home #sidebar_dropdown > span
+    {
+        height: 3px;
+        background-color: var(--white);
+    }
+    #home > input
+    {
+        display: block;
+        width: 45px;
+        height: 45px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 2px;
+        opacity: 0;
+        position: absolute;
+        z-index: 15;
+    }
+    #home > input:checked
+    {
+        margin-left: 250px;
+
+    }
+    #home > input:checked ~ #sidebar
+    {
+        display: flex;
+        height: calc(100% - 50px);
+    }
+    #home > input:checked ~ #sidebar_dropdown
+    {
+        margin-left: 250px;
+        border-left: 0px;
+    }
+    #home #sidebar
+    {
+        display: none;
+        position: absolute;
+        z-index: 10;
+    }
+}
+

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{url_for('home.static', filename='css/chat.css')}}">
+<div id="chat">
+    <div id="chat_content"></div>
+    <div id="chat_footer">
+        
+        <button class="chat_btn"></button>
+        <input type="checkbox">
+        <form action="" id="footer_dropdown">
+            <label>Browse for file</label>
+            <input id="browse_img" name="file" type="file" required>
+            <button type="submit" id="send_img" class="btn">submit</button>
+        </form>
+        
+        <input type="text" id="chat_input" placeholder="message an {{user}}">
+        <button type="buttone" id="chat_btn">send</button>
+    </div>
+    <script type="module" src="{{url_for('home.static', filename='js/chat.js')}}"></script>
+</div>

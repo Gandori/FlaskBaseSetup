@@ -1,0 +1,114 @@
+#header
+{
+    display: flex;
+    border-bottom: 1px solid var(--white);
+    justify-content: flex-end;
+    width: 100%;
+    height: 50px;
+    font-size: calc(var(--font_size) - 3px);
+    z-index: 100;
+}
+#header h2:first-of-type
+{
+    margin: 0px;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+}
+#header img
+{
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--white);
+    border-radius: 100%;
+    padding: 0px;
+    background-color: var(--white);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#header > #dropdown
+{
+    display: flex;
+    flex-direction: column;
+}
+#header #dropdown_icon 
+{
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+    position: relative;
+    display: grid;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+    margin: 2px;
+    margin-bottom: 0px;
+}
+#header #dropdown_icon > span
+{
+    height: 3px;
+    background-color: var(--white);
+}
+#header #dropdown_menue
+{
+    visibility: hidden;
+    width: 200px;
+    max-height: 300px;
+    background-color: var(--black);
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    top: 44px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    justify-content: space-between;
+}
+#header #dropdown_menue_header
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 5px;
+}
+#header #dropdown_menue_content
+{
+    overflow-y: scroll;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#header #dropdown_menue a
+{
+    cursor: pointer;
+    height: 40px;
+    align-content: center;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    text-decoration: none;
+}
+#header #dropdown_menue a:hover 
+{
+    background-color: var(--hover);
+}
+#header #dropdown_menue_footer
+{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--white);
+}
+#header #dropdown_icon:hover #dropdown_menue 
+{
+    visibility: visible;
+}
+#header #msg_icon:hover #dropdown_menue 
+{
+    visibility: visible;
+}

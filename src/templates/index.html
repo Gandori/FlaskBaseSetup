@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content "IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="default-style" content="the document's preferred stylesheet">
+    <meta name="author" content="Marcel Stiebing">
+    <meta name="audience" content="Alle"><meta http-equiv="content-language" content="de">
+    <meta name="robots" content="index, nofollow">
+    <meta name="chach" nochach>
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    {% include 'message.html' %}
+    <main id="main">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>

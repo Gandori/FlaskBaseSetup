@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('signup.static', filename='css/auth.css')}}">
+    <form id="form" action="{{url_for('signup.index')}}" method="POST">
+        <h1>Sign-up</h1>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="pwd" placeholder="Password" required>
+        <input type="password" name="pwd2" placeholder="Confirm" required>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+{% endblock content %}

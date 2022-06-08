@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block content %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('home.static', filename='css/home.css')}}">
+    <div id="home">
+        <input type="checkbox">
+        <div id="sidebar_dropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        {% include 'sidebar.html' %}
+        <div id="content">
+            {% include content %}
+        </div>
+    </div>
+    <script type="module" src="{{url_for('home.static', filename='js/home.js')}}"></script>
+{% endblock content %}

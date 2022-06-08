@@ -1,0 +1,56 @@
+#profile
+{
+    overflow: hidden;
+    height: 100%;
+    overflow-y: scroll;
+}
+#profile img
+{
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 2px solid var(--hover);
+    cursor: pointer;
+    position: relative;
+}
+#profile label 
+{
+    background-color: var(--white);
+    color: var(--black);
+}
+#profile form
+{
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+#profile form div
+{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    padding: 5px;
+    padding-top: 10px;
+    border: 2px solid var(--white);
+}
+#profile form input
+{
+    margin: auto;
+    display: flex;
+    height: 50px;
+    width: 90%;
+    border: 0px;
+    font-size: var(--font_size);
+}
+#profile form button
+{
+    margin: auto;
+    width: 70%;
+}
