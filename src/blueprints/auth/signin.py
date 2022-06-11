@@ -1,3 +1,4 @@
+from html import escape
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from src.database.database import database
 from src.modules.session import *
@@ -49,8 +50,8 @@ def index():
 
     if request.method == 'POST':
         #form daten
-        username = request.form['username']
-        pwd = request.form['pwd']
+        username = escape(request.form['username'])
+        pwd = escape(request.form['pwd'])
 
         #ist username in der datenbank
         if not is_username_valid(username):
