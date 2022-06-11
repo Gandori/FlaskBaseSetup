@@ -1,10 +1,10 @@
 {% with msg = get_flashed_messages() %}
-{% if msg %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/message.css')}}">
-    <div id="msg">
-        <h4>{{msg[0]}}</h4>
-        <button onclick="close_msg()">X</button>
-    </div>
-    <script src="{{url_for('static', filename='js/message.js')}}"></script>
-{% endif%}
+    {% if msg %}
+        <link rel="stylesheet" href="{{url_for('static', filename='css/message.css')}}">
+        <div id="msg">
+            <h4>{{msg[0]}}</h4>
+            <button onclick="close_msg()">X</button>
+        </div>
+        <script src="{{url_for('static', filename='js/message.js')}}"></script>
+    {% endif%}
 {% endwith %}

@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, url_for, flash
 from src.database.database import database
-from src.modules.session import *
+from src.modules.session import get_session
+from src.modules.session import delete_session
 
 logout = Blueprint('logout',__name__)
 
@@ -10,8 +11,9 @@ def set_user_offline(username):
 
 @logout.route('/', methods=['GET'])
 def index():
-    if get_session():
-        set_user_offline(get_session())
+    username = get_session()
+    if username:
+        set_user_offline(username)
         delete_session()
         flash('Du hast dich Erfolgreich ausgelogt')
     return redirect(url_for('signin.index'))

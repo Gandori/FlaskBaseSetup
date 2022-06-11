@@ -1,72 +1,42 @@
 from html import escape
-from flask import Blueprint, render_template, request, redirect, url_for,flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from src.modules.session import get_session, create_session
 from src.database.database import database
-from src.modules.session import *
-from src.database.database import database
-
 
 signin = Blueprint('signin',__name__)
 signin.template_folder = 'templates'
 signin.static_folder = 'static'
 
-PAGE = 'signin.html'
-TITLE = 'signin'
-MESSAGES = [
-    'Die Angaben stimmen nicht',
-    'Du hast dich Erfolgreich Eingeloggt',
-]
+def redirect_home():
+    return redirect(url_for("home.index"))
 
-def is_session():
-    if get_session():
-        if database.is_user_in_database(get_session()):
-            return True
-
-def is_admin(username, pwd):
-    with database() as db:
-        db.cursor.execute(f"select password from admin where name = '{username}' and password='{pwd}'")
-        return db.cursor.fetchone()
-
-def render(PAGE, TITLE):
-    return render_template(PAGE, TITLE=TITLE)
-
-def set_user_online(username):
-    with database() as db:
-        db.cursor.execute(f"update users set status = 'online' where name = '{username}'")
-
-def is_username_valid(username):
-    with database() as db:
-        db.cursor.execute(f"select name from users where name='{username}'")
-        return db.cursor.fetchone()
-
-def valid_password(username, pwd):
-    with database() as db:
-        db.cursor.execute(f"select password from users where name='{username}' and password='{pwd}'")
-        return db.cursor.fetchone()
+def render():
+    return render_template('signin.html', TITLE='signin')
 
 @signin.route('/', methods=['GET', 'POST'])
 def index():
+    username = get_session()
 
-    if is_session(): return redirect(url_for("home.index"))
+    if username: return redirect_home()
+
+    if request.method == 'GET':return render()
 
     if request.method == 'POST':
-        #form daten
+
         username = escape(request.form['username'])
         pwd = escape(request.form['pwd'])
 
-        #ist username in der datenbank
-        if not is_username_valid(username):
-            flash(MESSAGES[0])
-            return render(PAGE, TITLE)
+        msg = 'Die Angaben stimmen nicht'
 
-        #ist passwort das selbe
-        if valid_password(username, pwd):
-            flash(MESSAGES[1])
-            create_session(username)
-            set_user_online(username)
-            return redirect(url_for('home.index'))
+        if not database.is_user_in_database(username):
+            flash(msg)
+            return render()
 
-        #passwort ist nicht das selbe
-        flash(MESSAGES[0])
-        return render(PAGE, TITLE)
+        if not database.valid_password(username, pwd):
+            flash(msg)
+            return render()
 
-    return render(PAGE, TITLE)
+        flash('Du hast dich Erfolgreich Eingeloggt')
+        create_session(username)
+        database.set_user_online(username)
+        return redirect_home()

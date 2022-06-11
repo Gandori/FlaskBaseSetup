@@ -1,7 +1,3 @@
-from os import path
-
-dir = path.dirname(path.abspath(__file__))
-
 class config:
     SECRET_KEY = 'secret_key'
     SESSION_COOKIE_NAME = 'session_cookie'

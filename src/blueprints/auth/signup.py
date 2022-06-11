@@ -21,6 +21,8 @@ def add_user_in_database(username, pwd):
 @signup.route('/', methods=['GET', 'POST'])
 def index():
 
+    return 'test'
+
     #wenn user online ist
     if get_session(): return redirect(url_for("home.index"))
 
